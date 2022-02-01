@@ -31,8 +31,8 @@ function WatchForm () {
         setForm({city: '', zone: ''});  
     }
 
-    const clickToDelete = (evt) => {
-        const index = dataList.findIndex((item) => item.city === evt.target.dataset.city);
+    const clickToDelete = (city) => {
+        const index = dataList.findIndex((item) => item.city === city);
         if (index === -1) {
             console.log('Что-то пошло не так')
             return;

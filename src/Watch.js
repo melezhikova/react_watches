@@ -8,7 +8,6 @@ class Watch extends React.Component {
 
     constructor (props) {
         super (props);
-        this.zone = this.props.item.zone;
 
         this.now = null;
         this.interval = null;
@@ -21,7 +20,7 @@ class Watch extends React.Component {
             <div className="watch">
                 <div className="city">{item.city}</div>
                 <div className="time">{this.state.time}</div>
-                <div className="del" data-city={item.city} onClick={this.props.delWatch}></div>
+                <div className="del" onClick={() => this.props.delWatch(item.city)}></div>
             </div>
         )
     }
@@ -34,7 +33,7 @@ class Watch extends React.Component {
 
     getnow () {
         const now = new Date();
-        const zoneTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (this.zone * 3600000));
+        const zoneTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (this.props.item.zone * 3600000));
         let hours = zoneTime.getHours();
         if (hours < 10) {
             hours = `0${hours}`;
